@@ -16,10 +16,7 @@ UPLOAD_FOLDER = os.getenv(
     os.path.join(BASE_DIR, "uploads")
 )
 
-DATABASE_PATH = os.getenv(
-    "DATABASE_PATH",
-    os.path.join(BASE_DIR, "database", "cloudnotes.db")
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 SECRET_KEY = os.getenv("SECRET_KEY", "default-secret-key")
 
@@ -29,7 +26,7 @@ app = Flask(__name__)
 # Flask configuration
 app.secret_key = SECRET_KEY
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-app.config["DATABASE_PATH"] = DATABASE_PATH
+app.config["DATABASE_URL"] = DATABASE_URL
 app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024
 
 # Register API Blueprint
@@ -38,7 +35,7 @@ app.register_blueprint(api_bp, url_prefix="/api")
 # Initialize database and uploads folder
 @app.before_first_request
 def startup():
-    init_db(DATABASE_PATH)
+    init_db(DATABASE_URL)
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Routes
