@@ -5,24 +5,24 @@
 - Assessment date: 2026-10-14
 - Repository: cloudnotes-v1
 - Assessment branch: assessment/production-readiness
-- Reviewed source commit: TODO
-- Assessment commit: TODO
+- Reviewed source commit: `83da3cd68f6414350ba79f53f8b85ecce41b13de`
+- Assessment commit: Pending commit of the production-readiness assessment files
 - Environment: Local CloudNotes project; individual test environments must be verified.
-- Release scope: TODO — define intended users, workload, data, and dependencies.
-- SLO: Not yet verified.
-- RTO: Not yet verified.
-- RPO: Not yet verified.
+- Release scope: CloudNotes Flask application deployed on a local Minikube/Kubernetes development cluster with PostgreSQL. This review covers the available application, deployment, observability, security, disaster-recovery, and cost evidence. Results apply only to the reviewed local environment; they do not establish production-environment readiness.
+- SLO: Not defined or evidenced in the reviewed materials.
+- RTO: Not defined or evidenced in the reviewed materials.
+- RPO: Not defined or evidenced in the reviewed materials.
 
 ## 2. Current Verdict
 
-Recommendation: NO-GO pending evidence review and closure of mandatory gates.
+Recommendation: NO-GO for production release. Mandatory gates remain unverified and operational targets are not established.
 
 Reason:
 The assessment has not yet established that all mandatory release gates pass. In particular, successful data restoration and integrity, recovery timing against declared objectives, access boundaries, secret handling, and tested alert response require verifiable evidence.
 
 This is a provisional assessment decision, not a claim that every control has failed. Missing evidence is UNVERIFIED.
 
-## 3. Provisional Score Summary
+## 3. Current Evidence Score Summary
 
 | Dimension | Score | Status |
 |---|---:|---|
@@ -33,7 +33,7 @@ This is a provisional assessment decision, not a claim that every control has fa
 | Cost | 0/8 | Provisional |
 | Overall | 0/40 | Provisional |
 
-Recalculate these scores after inspecting the evidence and updating all 20 checklist rows.
+These scores reflect the current checklist, in which all 20 controls remain UNVERIFIED. Recalculate them after each control has been assessed against its actual evidence.
 
 Scoring:
 - PASS = 2
@@ -58,40 +58,40 @@ A GO recommendation requires every mandatory gate to PASS, every dimension to sc
 
 ### G01 — Restore Integrity Not Yet Proven
 - Severity: Critical for a release promising recoverable user notes.
-- Owner: TBD — assign an actual responsible person.
-- Target date: TBD — agree a realistic date.
+- Owner: Assessment author and service owner; confirm the responsible person before closure.
+- Target date: Before any production release; agree and record a calendar date with the service owner.
 - Required action: Run an approved isolated database/application restore.
 - Closure test: Verify expected records and application behavior, and record actual recovery timing and recovery point.
 - Gate: D2.
 
 ### G02 — Recovery Objectives Not Yet Validated
 - Severity: Critical until recovery requirements and results are reconciled.
-- Owner: TBD.
-- Target date: TBD.
+- Owner: Assessment author and service owner; confirm the responsible person before closure.
+- Target date: Before any production release; agree and record a calendar date with the service owner.
 - Required action: Define or obtain the agreed RTO and RPO, then measure recovery.
 - Closure test: Compare observed recovery time and data-loss bounds with the agreed targets.
 - Gate: D3.
 
 ### G03 — Alert Delivery and Response Not Yet Proven
 - Severity: To be determined from release scope and impact.
-- Owner: TBD.
-- Target date: TBD.
+- Owner: Assessment author and service owner; confirm the responsible person before closure.
+- Target date: Before any production release; agree and record a calendar date with the service owner.
 - Required action: Exercise an alert and verify notification delivery and response ownership.
 - Closure test: Preserve actual test output and response evidence.
 - Gate: O2.
 
 ### G04 — Access Boundaries and Secret Handling Not Yet Proven
 - Severity: Critical if unauthorized access or credential exposure threatens the declared release.
-- Owner: TBD.
-- Target date: TBD.
+- Owner: Assessment author and service owner; confirm the responsible person before closure.
+- Target date: Before any production release; agree and record a calendar date with the service owner.
 - Required action: Perform access-negative tests and review secret handling.
 - Closure test: Preserve sanitized test results and document findings and remediation.
 - Gates: S1 and S2.
 
 ### G05 — Scope and Operational Targets Need Confirmation
 - Severity: Blocks a defensible GO decision.
-- Owner: TBD.
-- Target date: TBD.
+- Owner: Assessment author and service owner; confirm the responsible person before closure.
+- Target date: Before any production release; agree and record a calendar date with the service owner.
 - Required action: Document intended users, data, workload, dependencies, SLO, RTO, and RPO.
 - Closure test: Confirm the requirements with the appropriate reviewer or service owner.
 
@@ -128,6 +128,6 @@ Before reconsidering the decision:
 5. Resolve critical gaps and document owners, agreed dates, and measurable closure tests.
 6. Reassess any evidence affected by changes to the reviewed source revision.
 
-Final verdict after reassessment: TODO — update based on actual evidence.
+Final decision for this assessment: NO-GO. Reassess only after mandatory gates, evidence gaps, and operational targets have been addressed.
 
-Assessment reviewer: TODO.
+Assessment reviewer: Self-assessment; independent reviewer approval has not been evidenced.

@@ -5,7 +5,7 @@
 - Assessment date: 2026-10-14
 - Repository: cloudnotes-v1
 - Assessment branch: assessment/production-readiness
-- Reviewed commit: TODO — record the source commit
+- Reviewed commit: `83da3cd68f6414350ba79f53f8b85ecce41b13de`
 - Environment: Local development / Kubernetes; verify per artifact
 - Evidence policy: No result is marked PASS until actual evidence is inspected.
 
@@ -14,16 +14,16 @@
 ### E01 — Application and Deployment Configuration
 - Candidate source: `app.py`, `k8s/deployment.yaml`
 - Type: Source/configuration
-- Date and source revision: TODO
+- Date and source revision: Tests run 2026-10-14; HEAD `83da3cd68f6414350ba79f53f8b85ecce41b13de`; working tree had uncommitted changes.
 - Expected result: Application and deployment configuration match the declared release scope.
-- Observed result: Not yet reviewed.
+- Observed result: `./venv/bin/pytest -q` reported 2 passed and 1 Flask deprecation warning. The tests check two routes with database initialization mocked. `/health` and `/ready` also returned successful JSON responses when called inside a CloudNotes pod.
 - Supports: R3, R4, O3; other checks only if directly supported.
 - Limitations: Configuration alone does not prove successful rollout, recovery, or application behavior.
 
 ### E02 — Container and Local Environment
 - Candidate sources: `Dockerfile`, `docker-compose.yml`, `Makefile`
 - Type: Build and environment configuration
-- Date and source revision: TODO
+- Date and source revision: Not verified; record when the artifact is collected and inspected.
 - Expected result: The documented local environment can be built and run reproducibly.
 - Observed result: Not yet tested.
 - Supports: R3, R4 when supported by actual build/run results.
@@ -37,16 +37,16 @@
   - `k8s/network-policy.yaml`
   - `k8s/pvc.yaml`
 - Type: Infrastructure configuration
-- Date and source revision: TODO
+- Date and source revision: Inspected 2026-10-14; HEAD `83da3cd68f6414350ba79f53f8b85ecce41b13de`; working tree had uncommitted changes.
 - Expected result: Workload, networking, storage, and configuration match the declared scope.
-- Observed result: Not yet reviewed.
+- Observed result: Three CloudNotes pods and one PostgreSQL pod were Ready. The cloudnotes service listed three endpoints on port 5000. A NetworkPolicy selecting PostgreSQL and allowing TCP 5432 from pods labelled `app=cloudnotes` exists.
 - Supports: R3, R4, S4, and D1 only where the actual configuration supports the claim.
 - Limitations: Manifests do not prove that access restrictions, backups, or recovery work.
 
 ### E04 — Monitoring Configuration
 - Candidate sources: `prometheus.yml`, `promtail.yml`
 - Type: Monitoring and logging configuration
-- Date and source revision: TODO
+- Date and source revision: Not verified; record when the artifact is collected and inspected.
 - Expected result: Relevant metrics and logs can be collected safely.
 - Observed result: Not yet tested.
 - Supports: O1 and O3 when backed by actual results.
@@ -55,7 +55,7 @@
 ### E05 — Local Failover Test
 - Candidate source: Previously performed CloudNotes failover exercise; locate the original script/output before linking it.
 - Type: Failure and recovery test
-- Date and source revision: TODO
+- Date and source revision: Not verified; record when the artifact is collected and inspected.
 - Expected result: Service recovers after the tested component fails and preserves the tested application behavior.
 - Observed result: Previously reported local test showed approximately 5.412 seconds to recovery, stable recovery, preserved baseline records, and successful new-note write/read. Verify the original output and tested revision before using these results.
 - Supports: R2, and R4 only if the test also supports capacity/dependency claims.
@@ -64,7 +64,7 @@
 ### E06 — Observability Test Results
 - Candidate source: Actual dashboard screenshots, alert test output, logs, or notification records.
 - Type: Runtime evidence
-- Date and source revision: TODO
+- Date and source revision: Not verified; record when the artifact is collected and inspected.
 - Expected result: Relevant signals are visible and an alert reaches the responsible responder.
 - Observed result: Missing until actual artifacts are located and inspected.
 - Supports: O1, O2, O3, O4 as applicable.
@@ -73,7 +73,7 @@
 ### E07 — Security Review
 - Candidate source: Actual access tests, secret-handling review, dependency/image scan, and network-policy validation.
 - Type: Security evidence
-- Date and source revision: TODO
+- Date and source revision: Not verified; record when the artifact is collected and inspected.
 - Expected result: Intended access boundaries hold, secrets are protected, and findings are triaged.
 - Observed result: Missing until actual test and audit results are inspected.
 - Supports: S1, S2, S3, S4 as applicable.
@@ -82,7 +82,7 @@
 ### E08 — Backup and Restore
 - Candidate source: Actual backup execution records and isolated restore/integrity test.
 - Type: Disaster recovery evidence
-- Date and source revision: TODO
+- Date and source revision: Not verified; record when the artifact is collected and inspected.
 - Expected result: Expected data is restored, integrity is verified, and recovery timing/data loss are measured.
 - Observed result: Unverified until actual restore output is found.
 - Supports: D1, D2, D3, D4 only where directly demonstrated.
@@ -113,6 +113,15 @@
 - Observed result: Calculated difference is $161.76/month, approximately 28.79%.
 - Supports: C1, C2; C3 and C4 require separate ownership/inventory evidence.
 - Limitations: Excluded services, usage variation, and taxes mean this is not a final bill.
+
+### E12 — Local Ingress Forwarding Test
+- Candidate source: Terminal output from `minikube service ingress-nginx-controller -n ingress-nginx --url` and subsequent curl tests.
+- Type: Runtime connectivity test
+- Date and source revision: Tested 2026-10-14; HEAD `83da3cd68f6414350ba79f53f8b85ecce41b13de`; working tree had uncommitted changes.
+- Expected result: Requests using host `cloudnotes.local` reach the application through local ingress forwarding.
+- Observed result: `curl` to `http://127.0.0.1:33179/health` and `/ready`, with `Host: cloudnotes.local`, returned HTTP 200 and the expected JSON status responses.
+- Supports: R3 and R4 only as limited evidence of current routing and endpoint availability.
+- Limitations: This used a local Minikube forwarding URL and does not prove production network availability, sustained availability, or failure recovery.
 
 ## Missing Evidence and Follow-up
 
