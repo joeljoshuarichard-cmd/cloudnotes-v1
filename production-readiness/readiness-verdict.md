@@ -6,7 +6,8 @@
 - Repository: cloudnotes-v1
 - Assessment branch: assessment/production-readiness-clean
 - Reviewed PR base commit: `dbb899e3c7a149fb9079024c10dd4237ea2afa33`
-- Assessment snapshot commit (before this metadata update): `8ce6ab0c3d8b897428328128f1ed98ac2c1eec75`
+- Previous assessment snapshot commit: `8ce6ab0c3d8b897428328128f1ed98ac2c1eec75`
+- Current assessment commit: Refer to the current PR head SHA in the PR description; update it after every assessment commit.
 - Environment: Local CloudNotes project; individual test environments must be verified.
 - Release scope: CloudNotes Flask application deployed on a local Minikube/Kubernetes development cluster with PostgreSQL. This review covers the available application, deployment, observability, security, disaster-recovery, and cost evidence. Results apply only to the reviewed local environment; they do not establish production-environment readiness.
 - SLO: Not defined or evidenced in the reviewed materials.
@@ -55,6 +56,8 @@ Scoring:
 A GO recommendation requires every mandatory gate to PASS, every dimension to score at least 6/8, an overall score of at least 32/40, a defined release scope and targets, and no unresolved critical gaps.
 
 ## 5. Findings and Remediation Plan
+
+The complete control-by-control evidence closure plan is documented in [`missing-evidence-register.md`](missing-evidence-register.md). Owners and target dates remain pending confirmation where no assignment has been agreed.
 
 ### G01 — Restore Integrity Not Yet Proven
 - Severity: Critical for a release promising recoverable user notes.

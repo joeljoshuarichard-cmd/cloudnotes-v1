@@ -5,7 +5,7 @@
 - **Assessment date:** 2026-10-14
 - **Repository:** `cloudnotes-v1`
 - **Assessment branch:** `assessment/production-readiness-clean`
-- **Assessment snapshot commit before metadata revisions:** `8ce6ab0c3d8b897428328128f1ed98ac2c1eec75`
+- **Previous assessment snapshot commit:** `8ce6ab0c3d8b897428328128f1ed98ac2c1eec75`
 - **Evidence capture source revision:** `3837a0cbecc5ce740cc36309aafe6d49547d9e94`
 - **Previously identified application source revision:** `83da3cd68f6414350ba79f53f8b85ecce41b13de` (relationship to the captured runtime image not verified)
 - **Environment:** Local development environment using Minikube and Kubernetes
@@ -14,9 +14,12 @@
 - **Working-tree state at evidence capture:** Uncommitted application and infrastructure changes were present
 - **Production environment:** Not assessed
 - **Target SLO, RTO and RPO:** Not defined or evidenced; these must be agreed with the service owner
+- **Current assessment commit:** Refer to the current PR head SHA in the PR description; update it after every assessment commit.
 - **Evidence policy:** Evidence must be traceable to an artifact or accessible URL. Configuration demonstrates that a control is defined, not necessarily that it works. Missing proof remains UNVERIFIED.
 
 ## 2. Evidence Register
+
+See [`missing-evidence-register.md`](missing-evidence-register.md) for the control-by-control evidence gaps, required closure tests, unresolved ownership, and target-date limitations.
 
 ### E01 — Application Tests and Deployment Source
 
