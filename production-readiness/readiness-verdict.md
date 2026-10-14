@@ -26,14 +26,14 @@ This is a provisional assessment decision, not a claim that every control has fa
 
 | Dimension | Score | Status |
 |---|---:|---|
-| Reliability | 0/8 | Provisional |
-| Observability | 0/8 | Provisional |
-| Security | 0/8 | Provisional |
-| Disaster Recovery | 0/8 | Provisional |
-| Cost | 0/8 | Provisional |
-| Overall | 0/40 | Provisional |
+| Reliability | 2/8 | Provisional — below threshold |
+| Observability | 1/8 | Provisional — below threshold |
+| Security | 1/8 | Provisional — below threshold |
+| Disaster Recovery | 0/8 | Provisional — below threshold |
+| Cost | 0/8 | Provisional — below threshold |
+| Overall | 4/40 | Provisional — NO-GO |
 
-These scores reflect the current checklist, in which all 20 controls remain UNVERIFIED. Recalculate them after each control has been assessed against its actual evidence.
+The current checklist records four controls as PARTIAL and sixteen as UNVERIFIED. No controls are recorded as PASS or FAIL. Scores are provisional and must be updated when new evidence is verified. The current total is 4/40.
 
 Scoring:
 - PASS = 2

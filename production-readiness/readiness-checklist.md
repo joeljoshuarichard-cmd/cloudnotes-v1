@@ -40,20 +40,20 @@ Do not treat missing evidence as a successful test.
 - Next action/retest: Link actual failure-test output and compare recovery time with the stated target.
 
 ### R3 — Rollout and Rollback
-- Status: UNVERIFIED
-- Score: 0
-- Evidence ID: E01, E03, E12
-- Finding: Rollout and rollback controls need verification.
+- Status: PARTIAL
+- Score: 1
+- Evidence ID: E01, E03, E12, E13
+- Finding: The deployment defines a rolling-update strategy with maxUnavailable set to 0, health probes, and three Ready CloudNotes pods in the captured cluster state. A successful rollback test has not been demonstrated.
 - Owner: Unassigned; confirm the responsible person before closure.
-- Next action/retest: Inspect deployment configuration and available rollout/rollback results.
+- Next action/retest: Capture a rollout test and a rollback test, verify application health during each, and record the tested revision and actual output.
 
 ### R4 — Load, Dependencies and Capacity
-- Status: UNVERIFIED
-- Score: 0
-- Evidence ID: E01, E03, E12
-- Finding: Capacity and dependency behavior under load need verification.
+- Status: PARTIAL
+- Score: 1
+- Evidence ID: E03, E12, E13
+- Finding: Three CloudNotes pods and CPU/memory requests and limits were observed. No verified load-test results establish behavior under peak demand or component failure.
 - Owner: Unassigned; confirm the responsible person before closure.
-- Next action/retest: Inspect actual load-test results, dependencies, and capacity limits.
+- Next action/retest: Run a repeatable load test, record latency, errors, throughput and resource utilization, and document dependency and capacity limits.
 
 ## 4. Observability
 
@@ -74,12 +74,12 @@ Do not treat missing evidence as a successful test.
 - Next action/retest: Record an actual alert test and the response outcome.
 
 ### O3 — Useful and Safe Logs
-- Status: UNVERIFIED
-- Score: 0
-- Evidence ID: E01, E04
-- Finding: Log usefulness and sensitive-data handling need verification.
+- Status: PARTIAL
+- Score: 1
+- Evidence ID: E01, E03, E13
+- Finding: Sampled application logs show successful health and readiness requests. A complete review of log coverage, retention, and sensitive-data handling has not been demonstrated.
 - Owner: Unassigned; confirm the responsible person before closure.
-- Next action/retest: Inspect application logs and confirm secrets and private data are excluded.
+- Next action/retest: Inspect representative application logs for usefulness and sensitive data, then record the review result and any required remediation.
 
 ### O4 — Incident Procedure and Owner
 - Status: UNVERIFIED
@@ -116,12 +116,12 @@ Do not treat missing evidence as a successful test.
 - Next action/retest: Link actual audit results and document severity and remediation.
 
 ### S4 — Network, Transport and Data Exposure
-- Status: UNVERIFIED
-- Score: 0
-- Evidence ID: E03, E07
-- Finding: Network restrictions, transport protection, and data exposure need verification.
+- Status: PARTIAL
+- Score: 1
+- Evidence ID: E03, E07, E13
+- Finding: A PostgreSQL NetworkPolicy is configured to allow TCP 5432 from CloudNotes-labelled pods. Policy enforcement, transport protection, and broader data-exposure controls remain unverified.
 - Owner: Unassigned; confirm the responsible person before closure.
-- Next action/retest: Inspect network policies and test the relevant access and transport controls.
+- Next action/retest: Test permitted and denied network paths, verify transport protection, and inspect relevant data-exposure controls; retain sanitized output.
 
 ## 6. Disaster Recovery
 
@@ -193,12 +193,12 @@ Do not treat missing evidence as a successful test.
 
 ## 8. Assessment Summary
 
-- Reliability: 0/8 — provisional
-- Observability: 0/8 — provisional
-- Security: 0/8 — provisional
+- Reliability: 2/8 — provisional
+- Observability: 1/8 — provisional
+- Security: 1/8 — provisional
 - Disaster Recovery: 0/8 — provisional
 - Cost: 0/8 — provisional
-- Overall: 0/40 — provisional
+- Overall: 4/40 — provisional
 - Mandatory gates: R2, O2, S1, S2, D2, D3
 - Verdict: NOT YET DETERMINED
 
