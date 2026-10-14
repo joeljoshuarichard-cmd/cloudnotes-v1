@@ -4,9 +4,9 @@
 
 - Assessment date: 2026-10-14
 - Repository: cloudnotes-v1
-- Assessment branch: assessment/production-readiness
-- Reviewed source commit: `83da3cd68f6414350ba79f53f8b85ecce41b13de`
-- Assessment commit: Pending commit of the production-readiness assessment files
+- Assessment branch: assessment/production-readiness-clean
+- Reviewed PR base commit: `dbb899e3c7a149fb9079024c10dd4237ea2afa33`
+- Assessment snapshot commit (before this metadata update): `8ce6ab0c3d8b897428328128f1ed98ac2c1eec75`
 - Environment: Local CloudNotes project; individual test environments must be verified.
 - Release scope: CloudNotes Flask application deployed on a local Minikube/Kubernetes development cluster with PostgreSQL. This review covers the available application, deployment, observability, security, disaster-recovery, and cost evidence. Results apply only to the reviewed local environment; they do not establish production-environment readiness.
 - SLO: Not defined or evidenced in the reviewed materials.
@@ -131,3 +131,19 @@ Before reconsidering the decision:
 Final decision for this assessment: NO-GO. Reassess only after mandatory gates, evidence gaps, and operational targets have been addressed.
 
 Assessment reviewer: Self-assessment; independent reviewer approval has not been evidenced.
+
+## Workload Assumptions and Unresolved Targets
+
+The reviewed evidence does not establish the intended production workload or service-level objectives. The following remain open requirements, not assumed values:
+
+- Intended users and concurrent-user peak: Not defined.
+- Expected request rate, peak traffic, and workload mix: Not defined.
+- Data classification, retention, and recovery requirements: Not defined.
+- Availability SLO and measurement window: Not defined.
+- Recovery time objective (RTO): Not defined.
+- Recovery point objective (RPO): Not defined.
+- Production deployment topology and external dependencies: Not assessed.
+
+- Accountable owner: Unassigned; the service owner must confirm the responsible individual.
+- Target date: Not agreed; record a calendar date after the responsible owner accepts the action.
+- Closure test: Record approved workload assumptions and SLO/RTO/RPO values, identify the approving owner, and link the approval or requirements artifact. Do not recommend GO until required targets are defined and mandatory gates are verified.

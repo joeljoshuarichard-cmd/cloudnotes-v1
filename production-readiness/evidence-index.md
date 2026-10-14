@@ -4,9 +4,10 @@
 
 - **Assessment date:** 2026-10-14
 - **Repository:** `cloudnotes-v1`
-- **Assessment branch:** `assessment/production-readiness`
-- **Assessment commit:** `3837a0cbecc5ce740cc36309aafe6d49547d9e94`
-- **Previously identified application source revision:** `83da3cd68f6414350ba79f53f8b85ecce41b13de`
+- **Assessment branch:** `assessment/production-readiness-clean`
+- **Assessment snapshot commit before metadata revisions:** `8ce6ab0c3d8b897428328128f1ed98ac2c1eec75`
+- **Evidence capture source revision:** `3837a0cbecc5ce740cc36309aafe6d49547d9e94`
+- **Previously identified application source revision:** `83da3cd68f6414350ba79f53f8b85ecce41b13de` (relationship to the captured runtime image not verified)
 - **Environment:** Local development environment using Minikube and Kubernetes
 - **Deployment image observed:** `localhost:5000/cloudnotes:1.0.1`
 - **Image-to-source mapping:** Not verified
